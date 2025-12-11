@@ -4,9 +4,11 @@
 class NodoBInterno : public NodoBPlusBase {
 private:
     NodoBPlusBase** punteros;
+        int numeroPunteros;
 public:
     NodoBInterno(int orden);
     ~NodoBInterno();
 
-    int buscar_siguiente();
+    int buscarSiguiente(int clave);
+    void insertarEnInterno(int clave, NodoBPlusBase* hijoDerecho);
 };

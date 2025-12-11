@@ -3,11 +3,18 @@
 #include "NodoGrafo.h"
 
 class NodoBHoja : public NodoBPlusBase {
-public:
+private:
     NodoGrafo** datos;
-    NodoBHoja* siguiente;
-    int* claves;
-
+    NodoBHoja* siguienteHoja;
+    int numeroDatos;
+public:
     NodoBHoja(int orden);
     ~NodoBHoja();
+
+    void insertarEnHoja(int clave, NodoGrafo* valor);
+
+    NodoBHoja* getSiguienteHoja();
+    void setSiguienteHoja(NodoBHoja* hoja);
+    NodoGrafo* getDato(int index);
+    int getNumeroDatos();
 };

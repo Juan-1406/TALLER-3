@@ -1,21 +1,34 @@
 #include "NodoBHoja.h"
 
-NodoBHoja::NodoBHoja(int orden) : NodoBPlusBase(orden, true) {
-    this -> siguiente = nullptr;
+NodoBHoja::NodoBHoja(int orden) : NodoBPlusBase(orden) {
+    this -> es_hoja = true;
+    this -> datos = new NodoGrafo*[orden];
+    this -> numeroDatos = 0;
+    this -> siguienteHoja = nullptr;
+}
 
-    int capacidadClaves = orden - 1;
-    claves = new int[capacidadClaves];
-    datos = new NodoGrafo*[capacidadClaves];
+NodoBHoja::~NodoBHoja() {delete[] datos;}
 
-    for (int i = 0; i < capacidadClaves; i++) {
-        claves[i]  = 0;
-        datos[i] = nullptr;
+void NodoBHoja::insertarEnHoja(int clave, NodoGrafo* valor) {
+    int i = numeroDatos - 1;
+
+    while (i >= 0 && claves[i] > clave) {
+        claves[i + 1] = claves[i];
+        datos[i + 1] = datos[i];
+        i--;
     }
 
-    numeroClaves = 0;
+    claves[i + 1] = clave;
+    datos[i + 1] = valor;
+
+    numeroDatos++;
+    numeroDatos++;
 }
 
-NodoBHoja::~NodoBHoja() {
-    delete[] datos;
-    delete[] claves;
-}
+NodoBHoja* NodoBHoja::getSiguienteHoja() {return siguienteHoja;}
+
+void NodoBHoja::setSiguienteHoja(NodoBHoja* hoja) {siguienteHoja = hoja;}
+
+NodoGrafo* NodoBHoja::getDato(int index) {return datos[index];}
+
+int NodoBHoja::getNumeroDatos() {return numeroDatos;}

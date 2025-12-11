@@ -2,9 +2,10 @@
 
 class NodoBPlusBase {
 protected:
+    int* claves;
     int orden;
     bool es_hoja;
-    int* claves;
+    int numeroClaves;
 
 public:
     NodoBPlusBase(int orden);

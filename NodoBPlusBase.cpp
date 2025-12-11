@@ -1,9 +1,10 @@
 #include "NodoBPlusBase.h"
 
-NodoBPlusBase::NodoBPlusBase(int ord, bool hoja) {
+NodoBPlusBase::NodoBPlusBase(int orden) {
+    this -> orden = orden;
+    this -> claves = new int[orden];
+    this -> numeroClaves = 0;
     this -> es_hoja = false;
-    this -> orden = ord;
-    this -> claves = nullptr;
 }
 
-NodoBPlusBase::~NodoBPlusBase() {}
+NodoBPlusBase::~NodoBPlusBase() {delete[] claves;}
