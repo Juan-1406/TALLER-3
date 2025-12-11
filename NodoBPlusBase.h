@@ -1,13 +1,13 @@
 #pragma once
 
 class NodoBPlusBase {
-private:
-    int* claves;
+protected:
     int orden;
     bool es_hoja;
+    int* claves;
+
 public:
-    NodoBPlusBase(int orden, bool es_hoja);
+    NodoBPlusBase(int orden);
     virtual ~NodoBPlusBase();
+    bool esHoja();
 };
-
-

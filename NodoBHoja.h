@@ -3,10 +3,11 @@
 #include "NodoGrafo.h"
 
 class NodoBHoja : public NodoBPlusBase {
-private:
-    NodoGrafo** datos;
-    NodoBHoja* siguiente_hoja;
 public:
+    NodoGrafo** datos;
+    NodoBHoja* siguiente;
+    int* claves;
+
     NodoBHoja(int orden);
     ~NodoBHoja();
 };

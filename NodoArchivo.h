@@ -9,6 +9,6 @@ public:
     NodoArchivo(int id, int tamaño, int tipo);
     ~NodoArchivo();
 
-    bool es_directorio() override;
+    bool es_directorio();
 };
 
