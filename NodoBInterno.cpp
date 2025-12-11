@@ -32,3 +32,11 @@ void NodoBInterno::insertarEnInterno(int clave, NodoBPlusBase* hijoDerecho) {
     numeroClaves++;
     numeroPunteros++;
 }
+
+NodoBPlusBase* NodoBInterno::getPuntero(int indx) {return punteros[indx];}
+
+void NodoBInterno::setPuntero(int indx, NodoBPlusBase* ptr) {punteros[indx] = ptr;}
+
+int NodoBInterno::getNumeroPunteros() {return numeroPunteros;}
+
+void NodoBInterno::setNumeroPunteros(int n) {numeroPunteros = n;}

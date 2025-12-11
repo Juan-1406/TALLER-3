@@ -17,4 +17,6 @@ public:
     void setSiguienteHoja(NodoBHoja* hoja);
     NodoGrafo* getDato(int index);
     int getNumeroDatos();
+
+    void moverRango(int inicio, int fin, NodoBHoja* destino);
 };

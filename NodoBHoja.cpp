@@ -32,3 +32,22 @@ void NodoBHoja::setSiguienteHoja(NodoBHoja* hoja) {siguienteHoja = hoja;}
 NodoGrafo* NodoBHoja::getDato(int index) {return datos[index];}
 
 int NodoBHoja::getNumeroDatos() {return numeroDatos;}
+
+void NodoBHoja::moverRango(int inicio, int fin, NodoBHoja* destino) {
+    for (int i = inicio; i < fin; ++i) {
+        int indxDestino = destino -> numeroDatos;
+        destino -> claves[indxDestino] = claves[i];
+        destino -> datos[indxDestino] = datos[i];
+        destino -> numeroDatos++;
+        destino -> numeroDatos++;
+    }
+
+    for (int i = fin; i < numeroDatos; ++i) {
+        claves[inicio] = claves[i];
+        datos[inicio] = datos[i];
+        inicio++;
+    }
+
+    numeroClaves = inicio;
+    numeroDatos = inicio;
+}
