@@ -6,6 +6,7 @@ NodoGrafo::NodoGrafo(int id) {
     this -> padres = new int[2];
     this -> totalPadres = 0;
     this -> capacidadPadres = 2;
+    this -> numeroHijos == 0;
 }
 
 NodoGrafo::~NodoGrafo() {delete[] padres;}
@@ -52,3 +53,21 @@ void NodoGrafo::eliminarPadre(int idPadre) {
     }
     totalPadres--;
 }
+
+void NodoGrafo::agregarHIjo(int idHijo) {
+    hijos[numeroHijos++] = idHijo;
+}
+
+void NodoGrafo::eliminarHijo(int idHijo) {
+    for (int i = 0; i < numeroHijos; i++) {
+        if (hijos[i] == idHijo) {
+            hijos[i] = hijos[numeroHijos - 1];
+            numeroHijos--;
+            return;
+        }
+    }
+}
+
+int* NodoGrafo::lista_hijos() {return hijos;}
+
+int NodoGrafo::cantidadHijos() {return numeroHijos;}

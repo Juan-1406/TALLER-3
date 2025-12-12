@@ -1,5 +1,6 @@
 #pragma once
 
+#include "NodoBPlusBase.h"
 #include "NodoBHoja.h"
 #include "NodoGrafo.h"
 #include "NodoBInterno.h"

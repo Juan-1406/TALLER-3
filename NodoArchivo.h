@@ -10,5 +10,7 @@ public:
     ~NodoArchivo();
 
     bool es_directorio();
+    int getTamaño();
+    int getTipo();
 };
 

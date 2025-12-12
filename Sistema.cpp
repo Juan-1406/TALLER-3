@@ -17,4 +17,36 @@ void Sistema::listar_contenido(int id_directorio) {}
 
 vector<string> Sistema::obtener_rutas_completas(int id_archivo) {}
 
-int Sistema::calcular_espacio_ocupado(int id_directorio) {}
+int Sistema::calcular_espacio_ocupado(int id_directorio) {
+    NodoGrafo* directorio = arbol -> buscar_nodo_grafo(id_directorio);
+
+    if (!directorio || !directorio -> es_directorio()) {
+        cout << "No es un directorio" << endl;
+        return 0;
+    }
+
+    int total = 0;
+    vector<int> pila;
+    pila.push_back(id_directorio);
+
+    while (!pila.empty()) {
+        int actual = pila.back();
+        pila.pop_back();
+
+        NodoGrafo* nodo = arbol -> buscar_nodo_grafo(actual);
+
+        if (!nodo -> es_directorio()) {
+            NodoArchivo* arch = (NodoArchivo*) nodo;
+            total += arch -> getTamaño();
+        } else {
+            int* hijos = ((NodoDirectorio*) nodo) -> lista_hijos();
+            int cant = ((NodoDirectorio*) nodo) -> cantidadHijos();
+
+            for (int i = 0; i < cant; i++) {
+                pila.push_back(hijos[i]);
+            }
+        }
+    }
+
+    return total;
+}
