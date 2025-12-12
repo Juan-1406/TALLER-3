@@ -150,4 +150,16 @@ void ArbolBPlus::insertar_nodo_grafo(int clave, NodoGrafo* nodo_grafo) {
     }
 }
 
-NodoGrafo* ArbolBPlus::buscar_nodo_grafo(int clave) {}
+NodoGrafo* ArbolBPlus::buscar_nodo_grafo(int clave) {
+    contadorAccesos++;
+
+    NodoBHoja* hoja = encontrarHoja(clave);
+    if (!hoja) {return nullptr;}
+
+    for (int i = 0; i < hoja -> getNumeroClaves(); i++) {
+        if (hoja -> getClave(i) == clave) {
+            return hoja -> getDato(i);
+        }
+    }
+    return nullptr;
+}
