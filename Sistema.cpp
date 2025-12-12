@@ -11,7 +11,24 @@ Sistema::~Sistema() {delete arbol;}
 
 void Sistema::crearNodo(int id_padre) {}
 
-void Sistema::eliminar_archivo(int id_archivo, int id_directorio_padre) {}
+void Sistema::eliminar_archivo(int id_archivo, int id_directorio_padre) {
+    NodoGrafo* padre = arbol -> buscar_nodo_grafo(id_directorio_padre);
+    NodoGrafo* archivo = arbol -> buscar_nodo_grafo(id_archivo);
+
+    if (!padre || !padre -> es_directorio()) {
+        cout << "El directorio padre no existe" << endl;
+        return;
+    }
+
+    if (!archivo || archivo -> es_directorio()) {
+        cout << "No corresponde a un archivo" << endl;
+        return;
+    }
+
+    padre -> eliminarHijo(id_archivo);
+    archivo -> eliminarPadre(id_directorio_padre);
+    cout << "Archivo eliminado del directorio" << endl;
+}
 
 void Sistema::listar_contenido(int id_directorio) {
     NodoGrafo* directorio = arbol -> buscar_nodo_grafo(id_directorio);
