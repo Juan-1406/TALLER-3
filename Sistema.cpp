@@ -9,6 +9,14 @@ Sistema::Sistema(int ordenArbol) {
 
 Sistema::~Sistema() {delete arbol;}
 
+void Sistema::insertar_nodo_grafo(int clave, NodoGrafo* nodo_grafo) {
+    arbol -> insertar_nodo_grafo(clave, nodo_grafo);
+}
+
+NodoGrafo* Sistema::buscar_nodo_grafo(int clave) {
+    return arbol -> buscar_nodo_grafo(clave);
+}
+
 void Sistema::crearNodo(int id_padre) {}
 
 void Sistema::eliminar_archivo(int id_archivo, int id_directorio_padre) {

@@ -18,7 +18,7 @@ void menu() {
 
 int main() {
 
-    int opcion, orden;
+    int opcion, orden, clave;
 
     cout << "Ingrese el orden del Arbol B+: "; cin >> orden;
     Sistema sistema(orden);
@@ -30,13 +30,25 @@ int main() {
             case 0:
                 cout << "Saliste con Exito!" << endl;
                 break;
-            case 1:
-                cout << "Ingrese ID del directorio padre: "; cin >> idPadre;
+            case 1: {
+                cout << "Clave del nodo a insertar:"; cin >> clave;
+                NodoGrafo* nodo = new NodoGrafo(clave);
+                sistema.insertar_nodo_grafo(clave, nodo);
+                cout << "Nodo insertado en Arbol B+" << endl;
                 cout<< endl;
                 break;
-            case 2:
+            }
+            case 2: {
+                cout << "Clave a buscar:"; cin >> clave;
+                NodoGrafo* nodo = sistema.buscar_nodo_grafo(clave);
+                if (nodo) {
+                    cout << "Nodo encontrado" << endl;
+                } else {
+                    cout << "Nodo no encontrado" << endl;
+                }
                 cout << endl;
                 break;
+            }
             case 3:
                 cout << endl;
                 break;
