@@ -16,3 +16,5 @@ int NodoBPlusBase::getNumeroClaves() {return numeroClaves;}
 int NodoBPlusBase::getClave(int indx) {return claves[indx];}
 
 void NodoBPlusBase::setClave(int indx, int val) {claves[indx] = val;}
+
+void NodoBPlusBase::setNumeroClaves(int n) {numeroClaves = n;}

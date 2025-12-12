@@ -15,4 +15,5 @@ public:
     int getNumeroClaves();
     int getClave(int indx);
     void setClave(int indx, int val);
+    void setNumeroClaves(int n);
 };

@@ -16,4 +16,6 @@ add_executable(TALLER_3 main.cpp
         NodoBInterno.h
         NodoBHoja.cpp
         NodoBHoja.h
+        ArbolBPlus.cpp
+        ArbolBPlus.h
 )
