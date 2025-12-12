@@ -132,6 +132,22 @@ void ArbolBPlus::dividirInterno(NodoBInterno* nodo) {
     insertarEnPadre(nodo, clave, nuevo);
 }
 
-void ArbolBPlus::insertar_nodo_grafo(int clave, NodoGrafo* nodo_grafo) {}
+void ArbolBPlus::insertar_nodo_grafo(int clave, NodoGrafo* nodo_grafo) {
+    if (raiz == nullptr) {
+        NodoBHoja* hoja = new NodoBHoja(orden);
+        hoja -> insertarEnHoja(clave, nodo_grafo);
+        raiz = hoja;
+        return;
+    }
+
+    NodoBHoja* hoja = encontrarHoja(clave);
+    if (!hoja) {return;}
+
+    hoja -> insertarEnHoja(clave, nodo_grafo);
+
+    if (hoja -> getNumeroClaves() > maximoClaves) {
+        dividirHoja(hoja);
+    }
+}
 
 NodoGrafo* ArbolBPlus::buscar_nodo_grafo(int clave) {}
