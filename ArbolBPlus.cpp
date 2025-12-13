@@ -1,7 +1,5 @@
 #include "ArbolBPlus.h"
 
-#include <functional>
-
 ArbolBPlus::ArbolBPlus(int orden) {
     this -> raiz = nullptr;
     this -> orden = orden;
@@ -54,6 +52,7 @@ void ArbolBPlus::insertarEnPadre(NodoBPlusBase* izquierda, int clave, NodoBPlusB
         nuevaRaiz -> setNumeroClaves(1);
 
         raiz = nuevaRaiz;
+        return;
     }
 
     NodoBPlusBase* actual = raiz;

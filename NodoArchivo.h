@@ -1,7 +1,7 @@
 #pragma once
 #include "NodoGrafo.h"
 
-class NodoArchivo : NodoGrafo {
+class NodoArchivo : public NodoGrafo {
 private:
     int tamaño;
     int tipo;

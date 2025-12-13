@@ -4,20 +4,54 @@ using namespace std;
 
 Sistema::Sistema(int ordenArbol) {
     this -> arbol = new ArbolBPlus(ordenArbol);
+    NodoDirectorio* raiz = new NodoDirectorio(0);
     this -> siguienteID = 1;
+
+    this -> crearEsDirectorio = true;
+    this -> crearTamaño = 0;
+    this -> crearTipo = 0;
 }
 
 Sistema::~Sistema() {delete arbol;}
 
-void Sistema::insertar_nodo_grafo(int clave, NodoGrafo* nodo_grafo) {
+void Sistema::setCrearDirectorio() {crearEsDirectorio = true;}
+
+void Sistema::setCrearArchivo(int tamaño, int tipo) {
+    crearEsDirectorio = false;
+    crearTamaño = tamaño;
+    crearTipo = tipo;
+}
+
+void Sistema::Insertar_nodo_grafo(int clave, NodoGrafo* nodo_grafo) {
     arbol -> insertar_nodo_grafo(clave, nodo_grafo);
 }
 
-NodoGrafo* Sistema::buscar_nodo_grafo(int clave) {
+NodoGrafo* Sistema::Buscar_nodo_grafo(int clave) {
     return arbol -> buscar_nodo_grafo(clave);
 }
 
-void Sistema::crearNodo(int id_padre) {}
+void Sistema::crearNodo(int id_padre) {
+
+    NodoGrafo* padre = arbol -> buscar_nodo_grafo(id_padre);
+    if (!padre || !padre -> es_directorio()) {
+        cout << "El directorio padre no existe" << endl;
+        return;
+    }
+
+    int nuevoID = siguienteID++;
+    NodoGrafo* nuevo = nullptr;
+
+    if (crearEsDirectorio) {
+        nuevo = new NodoDirectorio(nuevoID);
+    } else {
+        nuevo = new NodoArchivo(nuevoID, crearTamaño, crearTipo);
+    }
+
+    arbol -> insertar_nodo_grafo(nuevoID, nuevo);
+    padre -> agregarHIjo(nuevoID);
+    nuevo -> agregarPadre(id_padre);
+    cout << "Nodo creado con ID: " << nuevoID << endl;
+}
 
 void Sistema::eliminar_archivo(int id_archivo, int id_directorio_padre) {
     NodoGrafo* padre = arbol -> buscar_nodo_grafo(id_directorio_padre);
